@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/managementFragment"
+        android:icon="@drawable/management"
+        android:title="@string/tab_management" />
+    <item
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/history"
+        android:title="@string/tab_history" />
+    <item
+        android:id="@+id/settingFragment"
+        android:icon="@drawable/setting"
+        android:title="@string/tab_setting" />
+</menu>
+

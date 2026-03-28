@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Coffee Order</string>
+    <string name="tab_management">Quản lý</string>
+    <string name="tab_history">Lịch sử order</string>
+    <string name="tab_setting">Thiết lập</string>
+
+    <string name="history_fragment">History Fragment</string>
+    <string name="management_fragment">Management Fragment</string>
+    <string name="setting_fragment">Setting Fragment</string>
+</resources>
