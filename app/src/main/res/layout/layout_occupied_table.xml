@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
+    android:layout_height="200dp"
     app:cardBackgroundColor="#FFC1C1"
     app:cardCornerRadius="24dp"
-    app:layout_constraintDimensionRatio="1:1"
+    app:strokeWidth="0dp"
+    android:layout_margin="4dp"
+
     tools:layout_height="200dp"
     tools:layout_width="200dp">
 
@@ -27,52 +29,29 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="6dp"
-            android:text="@string/occupied"
-            android:textColor="@color/primary_text_color"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvNumber"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvNumber" />
-
-        <TextView
-            android:id="@+id/tvLabelCustomer"
+            android:id="@+id/tvLabelCapacity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:letterSpacing="0.1"
-            android:text="@string/customer"
+            android:text="@string/capacity"
             android:textColor="#B35D5D"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/tvCustomerName"
+            app:layout_constraintBottom_toTopOf="@+id/tvCapacityValue"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/tvCustomerName"
+            android:id="@+id/tvCapacityValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/marcus_j"
+            android:text="@string/_4_persons"
             android:textColor="#7A0D0D"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivTimer"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivTimer"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:contentDescription="@string/timer_icon"
-            android:src="@drawable/ic_timer"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

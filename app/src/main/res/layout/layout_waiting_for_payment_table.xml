@@ -2,11 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
+    android:layout_height="200dp"
+    android:layout_margin="4dp"
     app:cardBackgroundColor="#5FFF8C"
     app:cardCornerRadius="24dp"
-    app:layout_constraintDimensionRatio="1:1"
+    app:strokeWidth="0dp"
     tools:layout_height="200dp"
+
     tools:layout_width="200dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,20 +28,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/free"
-            android:textColor="@color/primary_text_color"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvNumber"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvNumber" />
-
-        <TextView
             android:id="@+id/tvLabelCapacity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,23 +43,14 @@
             android:id="@+id/tvCapacityValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:text="@string/_4_persons"
             android:textColor="#004D23"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivAddIcon"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivAddIcon"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:contentDescription="@string/add_icon"
-            android:src="@drawable/ic_add_circle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
