@@ -11,7 +11,9 @@ import com.coffee.order.databinding.LayoutWaitingForPaymentTableBinding
 import com.coffee.order.util.toDisplayTableNumber
 import com.coffee.order.viewmodel.model.TableInfo
 
-class TableGridAdapter : ListAdapter<TableInfo, RecyclerView.ViewHolder>(DiffCallback) {
+class TableGridAdapter(
+    private val onTableClick: (TableInfo) -> Unit
+) : ListAdapter<TableInfo, RecyclerView.ViewHolder>(DiffCallback) {
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position).status) {
@@ -46,6 +48,9 @@ class TableGridAdapter : ListAdapter<TableInfo, RecyclerView.ViewHolder>(DiffCal
             is EmptyViewHolder -> holder.bind(item)
             is OccupiedViewHolder -> holder.bind(item)
             is WaitingForPaymentViewHolder -> holder.bind(item)
+        }
+        holder.itemView.setOnClickListener {
+            onTableClick(item)
         }
     }
 

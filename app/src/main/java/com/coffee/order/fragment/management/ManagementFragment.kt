@@ -12,7 +12,12 @@ import com.coffee.order.databinding.FragmentManagementBinding
 class ManagementFragment : MainActivityBaseFragment<FragmentManagementBinding>(
     FragmentManagementBinding::inflate
 ) {
-    private val tableGridAdapter = TableGridAdapter()
+    private val tableGridAdapter = TableGridAdapter(
+        onTableClick = { tableInfo ->
+            mainActivity.navigateToCreateOrder(tableInfo.tableId)
+        }
+    )
+
     override fun setUpEventListeners() {
         binding.tableManagementGrid.apply {
             layoutManager = GridLayoutManager(context, 2)
