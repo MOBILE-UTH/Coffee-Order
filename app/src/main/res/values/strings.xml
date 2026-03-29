@@ -7,4 +7,11 @@
     <string name="history_fragment">History Fragment</string>
     <string name="management_fragment">Management Fragment</string>
     <string name="setting_fragment">Setting Fragment</string>
+    <string name="_103">#103</string>
+    <string name="tra_dao_cam_sa">Trà đào cam sả</string>
+    <string name="drinks">Drinks</string>
+    <string name="_30_000">30,000đ</string>
+    <string name="edit_table">Edit Table</string>
+    <string name="table_2">Table 2</string>
+    <string name="id_t_02">ID: T-02</string>
 </resources>
