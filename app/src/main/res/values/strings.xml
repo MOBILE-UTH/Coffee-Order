@@ -7,4 +7,16 @@
     <string name="history_fragment">History Fragment</string>
     <string name="management_fragment">Management Fragment</string>
     <string name="setting_fragment">Setting Fragment</string>
+    <string name="customer">CUSTOMER</string>
+    <string name="marcus_j">Marcus J.</string>
+    <string name="occupied">OCCUPIED</string>
+    <string name="_01">01</string>
+    <string name="capacity">CAPACITY</string>
+    <string name="_4_persons">4 Persons</string>
+    <string name="add_icon">Add Icon</string>
+    <string name="free">FREE</string>
+    <string name="_02">02</string>
+    <string name="_03">03</string>
+    <string name="_2_persons">2 Persons</string>
+    <string name="timer_icon">Timer Icon</string>
 </resources>
