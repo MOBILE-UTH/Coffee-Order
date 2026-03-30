@@ -46,10 +46,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun navigateToCreateOrder(orderId: Long) {
+    fun navigateToCreateOrder(tableId: Long) {
         navController.navigate(
             resId = R.id.orderFragment,
-            args = OrderFragment.createBundle(orderId = orderId)
+            args = OrderFragment.createBundle(tableId = tableId)
         )
     }
 

@@ -21,7 +21,7 @@ class ManagementFragment : MainActivityBaseFragment<FragmentManagementBinding>(
                 )
             }
             createOrderButton.setOnClickListener {
-                mainActivity.navigateToCreateOrder(orderId = System.currentTimeMillis())
+                mainActivity.navigateToCreateOrder(tableId = appViewModel.tableInfoList.value.random().tableId)
             }
         }
     }

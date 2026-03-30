@@ -10,35 +10,56 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
 ) {
 
     companion object {
-        private const val ORDER_ID_KEY = "order_id"
-        fun createBundle(orderId: Long) = Bundle().apply {
-            putLong(ORDER_ID_KEY, orderId)
+        private const val TABLE_ID_KEY = "table_id"
+        fun createBundle(tableId: Long) = Bundle().apply {
+            putLong(TABLE_ID_KEY, tableId)
         }
     }
 
-    private var orderId: Long? = null
+    class Cart(
+        val tableId: Long,
+    ) {
+        /**
+         * key: menuItemId, value: quantity
+         */
+        private val items = mutableMapOf<Long, Int>()
 
+        fun addItem(menuItemId: Long, quantity: Int = 1) {
+            items[menuItemId] = (items[menuItemId] ?: 0) + quantity
+        }
+
+        fun removeItem(menuItemId: Long, quantity: Int = 1) {
+            val currentQuantity = items[menuItemId] ?: return
+            val newQuantity = currentQuantity - quantity
+            if (newQuantity <= 0) {
+                items.remove(menuItemId)
+            } else {
+                items[menuItemId] = newQuantity
+            }
+        }
+    }
+
+    private lateinit var cart: Cart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        orderId = arguments?.getLong(ORDER_ID_KEY)
+        val tableId = arguments?.getLong(TABLE_ID_KEY)
+        if (tableId == null) {
+            mainActivity.onBackPressedDispatcher.onBackPressed()
+            return
+        }
+        cart = Cart(tableId = tableId)
     }
 
     @SuppressLint("SetTextI18n")
     override fun setUpEventListeners() {
         binding.apply {
-            textViewOrder.text = "Order ID: ${orderId.toTimeString()}"
+            textViewOrder.text = """
+                Create Order for Table ${cart.tableId}
+            """.trimIndent()
         }
     }
 
     override fun collectStateAndUpdateUi() {
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    private fun Long?.toTimeString(): String {
-        if (this == null) return "N/A"
-        val date = java.util.Date(this)
-        val format = java.text.SimpleDateFormat("HH:mm:ss")
-        return format.format(date)
     }
 }
 
