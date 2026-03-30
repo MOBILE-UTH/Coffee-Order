@@ -33,13 +33,21 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         )
         _historyOrders.value = listOf(
             HistoryOrder(
-                1,
-                2,
-                listOf(_menuItems.value[0], _menuItems.value[1]),
-                55000.0,
-                "2024-06-01 10:00:00"
+                orderId = 1,
+                staffName = "Nhân viên A",
+                tableId = 2,
+                menuItems = listOf(_menuItems.value[0], _menuItems.value[1]),
+                totalPrice = 55000.0,
+                orderTime = "2024-06-01 10:00:00"
             ),
-            HistoryOrder(2, 3, listOf(_menuItems.value[2]), 35000.0, "2024-06-01 11:00:00"),
+            HistoryOrder(
+                orderId = 2,
+                staffName = "Nhân viên B",
+                tableId = 3,
+                menuItems = listOf(_menuItems.value[2]),
+                totalPrice = 35000.0,
+                orderTime = "2024-06-01 11:00:00"
+            ),
         )
     }
 
