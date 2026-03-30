@@ -7,4 +7,10 @@
     <string name="history_fragment">History Fragment</string>
     <string name="management_fragment">Management Fragment</string>
     <string name="setting_fragment">Setting Fragment</string>
+    <string name="_38_000">38,000đ</string>
+    <string name="dung_n">Dung N.</string>
+    <string name="table_04">Table 04</string>
+    <string name="ca_phe_sua_ca_phe_den">Cà phê sữa x1, Cà phê đen x1</string>
+    <string name="ord_2094">#ORD-2094</string>
+    <string name="today_14_20">Today, 14:20</string>
 </resources>
