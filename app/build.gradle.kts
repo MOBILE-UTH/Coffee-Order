@@ -41,6 +41,9 @@ android {
         viewBinding = true
         compose = true
     }
+    lint {
+        disable += "SetTextI18n"
+    }
 }
 
 dependencies {
