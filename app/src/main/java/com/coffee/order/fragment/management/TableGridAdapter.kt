@@ -19,7 +19,6 @@ class TableGridAdapter(
         return when (getItem(position).status) {
             TableInfo.Status.EMPTY -> VIEW_TYPE_EMPTY
             TableInfo.Status.OCCUPIED -> VIEW_TYPE_OCCUPIED
-            TableInfo.Status.WAITING_FOR_PAYMENT -> VIEW_TYPE_WAITING_FOR_PAYMENT
         }
     }
 

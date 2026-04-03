@@ -35,7 +35,8 @@ class SettingFragment : MainActivityBaseFragment<FragmentSettingBinding>(
                     TableInfo(
                         tableId = Random.nextLong(),
                         tableName = "Table ${Random.nextInt(1, 10)}",
-                        status = TableInfo.Status.entries.random()
+                        status = TableInfo.Status.entries.random(),
+                        maxPeople = 4
                     )
                 )
             }
