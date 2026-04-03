@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.coffee.order.fragment.HistoryFragment"
+        android:name="com.coffee.order.fragment.history.HistoryFragment"
         android:label="@string/tab_history"
         tools:layout="@layout/fragment_history" />
 
