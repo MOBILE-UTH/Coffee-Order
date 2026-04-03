@@ -32,12 +32,12 @@ class ActiveOrderListAdapter(
         binding.textViewMenuName.text = item.name
         binding.textViewMenuCategory.text = item.category
         binding.textViewQuantity.text = "x${item.quantity}"
-        binding.textViewLineTotal.text = "${formatPrice(item.lineTotal)}"
+        binding.textViewLineTotal.text = formatPrice(item.lineTotal)
 
         return binding.root
     }
 
-    private fun formatPrice(value: Double): String {
+    fun formatPrice(value: Int): String {
         return DecimalFormat("#,###").format(value)
     }
 }
@@ -47,5 +47,5 @@ data class OrderItemUi(
     val name: String,
     val category: String,
     val quantity: Int,
-    val lineTotal: Double,
+    val lineTotal: Int, // Tổng tiền cho món này (price * quantity)
 )

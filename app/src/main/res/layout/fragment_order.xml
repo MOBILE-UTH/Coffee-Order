@@ -31,6 +31,7 @@
                     android:padding="20.dp">
 
                     <TextView
+                        android:id="@+id/textViewTableName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -45,86 +46,6 @@
                         android:text="@string/standard_dining_area_premium_service"
                         android:textColor="@color/black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_gray_rounded"
-                            android:gravity="center_vertical"
-                            android:padding="12dp">
-
-                            <View
-                                android:layout_width="32dp"
-                                android:layout_height="28dp"
-                                android:background="@drawable/ic_guest_green" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/_4_guests"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/guests"
-                                    android:textSize="10sp"
-                                    tools:ignore="SmallSp" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <Space
-                            android:layout_width="12dp"
-                            android:layout_height="wrap_content" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_gray_rounded"
-                            android:gravity="center_vertical"
-                            android:padding="12dp">
-
-                            <View
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:background="@drawable/ic_time_blue" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="12dp"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/_1h_20m"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/elapsed"
-                                    android:textSize="10sp"
-                                    tools:ignore="SmallSp" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -144,6 +65,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textViewItemsServed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_3_items_served"
@@ -162,6 +84,7 @@
                 tools:listitem="@layout/item_order_active" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSummary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -189,6 +112,7 @@
                             android:textColor="@color/black" />
 
                         <TextView
+                            android:id="@+id/textViewSubtotal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/_131_000"
@@ -208,6 +132,7 @@
                             android:textColor="@color/black" />
 
                         <TextView
+                            android:id="@+id/textViewVAT"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/_13_100"
@@ -235,6 +160,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/textViewTotalDue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/_144_100"
@@ -257,6 +183,7 @@
                 app:cornerRadius="30dp" />
 
             <LinearLayout
+                android:id="@+id/linearLayoutActions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -264,27 +191,29 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonDeleteCart"
                     style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
                     android:backgroundTint="#EB7873"
-                    android:text="@string/print_bill"
-                    android:textColor="#1D1D1D"
+                    android:text="@string/delete_cart"
+                    android:textColor="@color/white"
                     app:cornerRadius="16dp"
-                    app:icon="@drawable/ic_print" />
+                    app:icon="@drawable/ic_delete" />
 
                 <Space
                     android:layout_width="12dp"
                     android:layout_height="wrap_content" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonPayment"
                     style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
                     android:backgroundTint="#00623B"
-                    android:text="@string/finalize_amp_pay"
+                    android:text="@string/payment"
                     app:cornerRadius="16dp"
                     app:icon="@drawable/ic_wallet" />
             </LinearLayout>

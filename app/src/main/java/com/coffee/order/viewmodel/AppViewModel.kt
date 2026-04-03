@@ -25,13 +25,12 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             TableInfo(
                 tableId = tableId.toLong(),
                 tableName = "Bàn $tableId",
-                status = TableInfo.Status.entries.random()
             )
         }
         _menuItems.value = listOf(
-            MenuItem(1, "Cà phê sữa đá", "Coffee", 30000.0),
-            MenuItem(2, "Cà phê đen đá", "Coffee", 25000.0),
-            MenuItem(3, "Trà sữa trân châu", "Coffee", 35000.0),
+            MenuItem(1, "Cà phê sữa đá", "Coffee", 30000),
+            MenuItem(2, "Cà phê đen đá", "Coffee", 25000),
+            MenuItem(3, "Trà sữa trân châu", "Coffee", 35000),
         )
         _historyOrders.value = listOf(
             HistoryOrder(

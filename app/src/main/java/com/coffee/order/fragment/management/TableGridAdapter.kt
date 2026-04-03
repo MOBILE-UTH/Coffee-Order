@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.coffee.order.databinding.LayoutEmptyTableBinding
 import com.coffee.order.databinding.LayoutOccupiedTableBinding
-import com.coffee.order.databinding.LayoutWaitingForPaymentTableBinding
 import com.coffee.order.util.toDisplayTableNumber
 import com.coffee.order.viewmodel.model.TableInfo
 
@@ -19,7 +18,6 @@ class TableGridAdapter(
         return when (getItem(position).status) {
             TableInfo.Status.EMPTY -> VIEW_TYPE_EMPTY
             TableInfo.Status.OCCUPIED -> VIEW_TYPE_OCCUPIED
-            TableInfo.Status.WAITING_FOR_PAYMENT -> VIEW_TYPE_WAITING_FOR_PAYMENT
         }
     }
 
@@ -34,10 +32,6 @@ class TableGridAdapter(
                 LayoutOccupiedTableBinding.inflate(inflater, parent, false)
             )
 
-            VIEW_TYPE_WAITING_FOR_PAYMENT -> WaitingForPaymentViewHolder(
-                LayoutWaitingForPaymentTableBinding.inflate(inflater, parent, false)
-            )
-
             else -> error("Unknown view type: $viewType")
         }
     }
@@ -47,7 +41,6 @@ class TableGridAdapter(
         when (holder) {
             is EmptyViewHolder -> holder.bind(item)
             is OccupiedViewHolder -> holder.bind(item)
-            is WaitingForPaymentViewHolder -> holder.bind(item)
         }
         holder.itemView.setOnClickListener {
             onTableClick(item)
@@ -71,18 +64,9 @@ class TableGridAdapter(
         }
     }
 
-    private class WaitingForPaymentViewHolder(
-        private val binding: LayoutWaitingForPaymentTableBinding,
-    ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: TableInfo) {
-            binding.tvNumber.text = item.tableId.toDisplayTableNumber()
-        }
-    }
-
     private companion object {
         const val VIEW_TYPE_EMPTY = 0
         const val VIEW_TYPE_OCCUPIED = 1
-        const val VIEW_TYPE_WAITING_FOR_PAYMENT = 2
 
         val DiffCallback = object : DiffUtil.ItemCallback<TableInfo>() {
             override fun areItemsTheSame(oldItem: TableInfo, newItem: TableInfo): Boolean {

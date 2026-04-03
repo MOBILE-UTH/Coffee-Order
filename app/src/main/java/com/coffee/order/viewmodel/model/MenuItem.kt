@@ -4,7 +4,7 @@ data class MenuItem(
     val menuItemId: Long = 0L,
     val name: String,
     val category: String,
-    val price: Double,
+    val price: Int,
     val image: ByteArray? = null
 ) {
     // Không so sánh image vì nó có thể rất lớn và không cần thiết cho việc xác định tính đồng nhất của MenuItem
