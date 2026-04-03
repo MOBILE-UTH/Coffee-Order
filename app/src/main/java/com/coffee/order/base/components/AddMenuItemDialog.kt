@@ -25,14 +25,14 @@ import com.coffee.order.R
 @Composable
 fun AddMenuItemDialog(
     onDismiss: () -> Unit,
-    onConfirm: (name: String, category: String, price: Double) -> Unit,
+    onConfirm: (name: String, category: String, price: Int) -> Unit,
 ) {
     var name by remember { mutableStateOf("") }
     var category by remember { mutableStateOf("") }
     var priceText by remember { mutableStateOf("") }
     var priceError by remember { mutableStateOf(false) }
 
-    val parsedPrice = priceText.toDoubleOrNull()
+    val parsedPrice = priceText.toIntOrNull()
     val isValidPrice = parsedPrice != null && parsedPrice > 0
     val canSubmit = name.isNotBlank() && category.isNotBlank() && isValidPrice
 

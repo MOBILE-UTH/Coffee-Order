@@ -79,5 +79,20 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         currentList.add(menuItem)
         _menuItems.value = currentList
     }
+
+    fun updateMenuItem(menuItem: MenuItem) {
+        val currentList = _menuItems.value.toMutableList()
+        val index = currentList.indexOfFirst { it.menuItemId == menuItem.menuItemId }
+        if (index != -1) {
+            currentList[index] = menuItem
+            _menuItems.value = currentList
+        }
+    }
+
+    fun deleteMenuItem(menuItemId: Long) {
+        val currentList = _menuItems.value.toMutableList()
+        currentList.removeAll { it.menuItemId == menuItemId }
+        _menuItems.value = currentList
+    }
 }
 

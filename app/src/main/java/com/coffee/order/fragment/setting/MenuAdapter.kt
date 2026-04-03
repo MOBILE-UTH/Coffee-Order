@@ -10,7 +10,10 @@ import com.coffee.order.viewmodel.model.MenuItem
 import java.text.NumberFormat
 import java.util.Locale
 
-class MenuAdapter : ListAdapter<MenuItem, MenuAdapter.ViewHolder>(DiffCallback) {
+class MenuAdapter(
+    private val onDeleteMenuItem: (menuItem: MenuItem) -> Unit,
+    private val onEditMenuItem: (menuItem: MenuItem) -> Unit,
+) : ListAdapter<MenuItem, MenuAdapter.ViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = LayoutMenuItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
@@ -22,14 +25,22 @@ class MenuAdapter : ListAdapter<MenuItem, MenuAdapter.ViewHolder>(DiffCallback) 
         holder.bind(getItem(position))
     }
 
-    class ViewHolder(
+    inner class ViewHolder(
         private val binding: LayoutMenuItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MenuItem) {
-            binding.tvProductId.text = item.menuItemId.toString()
-            binding.tvProductName.text = item.name
-            binding.tvCategory.text = item.category
-            binding.tvProductPrice.text = currencyFormatter.format(item.price)
+            binding.apply {
+                tvProductId.text = item.menuItemId.toString()
+                tvProductName.text = item.name
+                tvCategory.text = item.category
+                tvProductPrice.text = currencyFormatter.format(item.price)
+                btnEditProduct.setOnClickListener {
+                    onEditMenuItem(item)
+                }
+                btnDeleteProduct.setOnClickListener {
+                    onDeleteMenuItem(item)
+                }
+            }
         }
     }
 

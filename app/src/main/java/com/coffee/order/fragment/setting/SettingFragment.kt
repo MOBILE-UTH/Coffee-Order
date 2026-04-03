@@ -7,12 +7,22 @@ import com.coffee.order.base.components.AddMenuItemDialog
 import com.coffee.order.base.components.ConfirmDeleteMenuItemDialog
 import com.coffee.order.base.components.EditMenuItemDialog
 import com.coffee.order.databinding.FragmentSettingBinding
+import com.coffee.order.viewmodel.model.MenuItem
 
 class SettingFragment : MainActivityBaseFragment<FragmentSettingBinding>(
     FragmentSettingBinding::inflate
 ) {
     private val tableInfoAdapter = TableAdapter()
-    private val menuItemAdapter = MenuAdapter()
+    private val menuItemAdapter = MenuAdapter(onDeleteMenuItem = { menuItem ->
+        showConfirmDeleteMenuItemDialog(menuItem.menuItemId)
+    }, onEditMenuItem = { menuItem ->
+        showEditMenuItemDialog(
+            menuItemId = menuItem.menuItemId,
+            initialName = menuItem.name,
+            initialCategory = menuItem.category,
+            initialPrice = menuItem.price.toDouble()
+        )
+    })
 
     override fun setUpEventListeners() {
 
@@ -26,7 +36,13 @@ class SettingFragment : MainActivityBaseFragment<FragmentSettingBinding>(
                     AddMenuItemDialog(
                         onDismiss = { GlobalComposeHandler.hideGlobalDialog() },
                         onConfirm = { name, category, price ->
-                            //TODO: Mai Dỗ Thành Nhơn xử lý logic thêm món vào menu ở đây
+                            appViewModel.addMenuItem(
+                                MenuItem(
+                                    name = name,
+                                    category = category,
+                                    price = price
+                                )
+                            )
                             GlobalComposeHandler.hideGlobalDialog()
                         }
                     )
@@ -46,22 +62,19 @@ class SettingFragment : MainActivityBaseFragment<FragmentSettingBinding>(
     }
 
 
-    fun showConfirmDeleteMenuItemDialog(menuItemId: Int) {
+    fun showConfirmDeleteMenuItemDialog(menuItemId: Long) {
         GlobalComposeHandler.showGlobalDialog {
-            ConfirmDeleteMenuItemDialog(
-                onDismissRequest = {
-                    GlobalComposeHandler.hideGlobalDialog()
-                },
-                onConfirmDelete = {
-                    // TODO: Mai Dỗ Thành Nhơn xử lý logic xoá món khỏi menu ở đây
-                    GlobalComposeHandler.hideGlobalDialog()
-                }
-            )
+            ConfirmDeleteMenuItemDialog(onDismissRequest = {
+                GlobalComposeHandler.hideGlobalDialog()
+            }, onConfirmDelete = {
+                appViewModel.deleteMenuItem(menuItemId)
+                GlobalComposeHandler.hideGlobalDialog()
+            })
         }
     }
 
     fun showEditMenuItemDialog(
-        menuItemId: Int, initialName: String, initialCategory: String, initialPrice: Double
+        menuItemId: Long, initialName: String, initialCategory: String, initialPrice: Double
     ) {
         GlobalComposeHandler.showGlobalDialog {
             EditMenuItemDialog(
@@ -70,10 +83,16 @@ class SettingFragment : MainActivityBaseFragment<FragmentSettingBinding>(
                 initialPrice = initialPrice,
                 onDismiss = { GlobalComposeHandler.hideGlobalDialog() },
                 onConfirm = { name, category, price ->
-                    // TODO: Mai Dỗ Thành Nhơn xử lý logic cập nhật món trong menu ở đây
+                    appViewModel.updateMenuItem(
+                        MenuItem(
+                            menuItemId = menuItemId,
+                            name = name,
+                            category = category,
+                            price = price.toInt()
+                        )
+                    )
                     GlobalComposeHandler.hideGlobalDialog()
-                }
-            )
+                })
         }
     }
 }
