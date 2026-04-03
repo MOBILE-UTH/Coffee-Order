@@ -40,4 +40,27 @@
     <string name="_2_persons">2 Persons</string>
     <string name="timer_icon">Timer Icon</string>
     <string name="th_m_m_n_m_i">Thêm món mới</string>
+    <string name="finalize_amp_pay"><![CDATA[Finalize & Pay]]></string>
+    <string name="print_bill">Print Bill</string>
+    <string name="add_items">+ Add Items</string>
+    <string name="_144_100">144,100đ</string>
+    <string name="total_due">Total Due</string>
+    <string name="_13_100">13,100đ</string>
+    <string name="vat_10">VAT (10%)</string>
+    <string name="_131_000">131,000đ</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="active_order">Active Order</string>
+    <string name="_3_items_served">3 Items Served</string>
+    <string name="elapsed">ELAPSED</string>
+    <string name="_1h_20m">1h 20m</string>
+    <string name="standard_dining_area_premium_service">Standard Dining Area • Premium Service</string>
+    <string name="brew_amp_balance"><![CDATA[Brew & Balance]]></string>
+    <string name="session_active">Session Active</string>
+    <string name="_4_guests">4 Guests</string>
+    <string name="guests">GUESTS</string>
+    <string name="product_image">Product Image</string>
+    <string name="_58_000">58,000đ</string>
+    <string name="x2">x2</string>
+    <string name="traditional_iced_coffee">Traditional Iced Coffee</string>
+    <string name="ca_phe_sua">Cà phê sữa</string>
 </resources>

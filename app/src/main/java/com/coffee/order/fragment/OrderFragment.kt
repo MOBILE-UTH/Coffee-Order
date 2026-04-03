@@ -61,9 +61,6 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
     @SuppressLint("SetTextI18n")
     override fun setUpEventListeners() {
         binding.apply {
-            textViewOrder.text = """
-                Create Order for Table ${cart.tableId}
-            """.trimIndent()
         }
     }
 
