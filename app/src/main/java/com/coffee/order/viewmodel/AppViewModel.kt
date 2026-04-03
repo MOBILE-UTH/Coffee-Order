@@ -25,7 +25,6 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             TableInfo(
                 tableId = tableId.toLong(),
                 tableName = "Bàn $tableId",
-                status = TableInfo.Status.entries.random(),
                 maxPeople = listOf(2, 4, 6).random()
             )
         }

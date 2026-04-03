@@ -46,7 +46,6 @@ class AddTableBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 TableInfo(
                     tableId = nextTableId,
                     tableName = tableName,
-                    status = TableInfo.Status.EMPTY,
                     maxPeople = capacity,
                 )
             )

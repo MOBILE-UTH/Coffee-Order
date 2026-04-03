@@ -80,7 +80,6 @@
     <string name="table_name_hint">Ví dụ: Bàn VIP 1</string>
     <string name="table_capacity_hint">Ví dụ: 4</string>
     <string name="save">Lưu</string>
-    <string name="cancel">Hủy</string>
     <string name="table_name_required">Vui lòng nhập tên bàn</string>
     <string name="table_capacity_required">Vui lòng nhập sức chứa</string>
     <string name="table_capacity_invalid">Sức chứa phải lớn hơn 0</string>

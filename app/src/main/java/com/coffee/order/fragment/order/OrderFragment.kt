@@ -188,7 +188,8 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
                 tableId = cart.tableId,
                 tableName = appViewModel.tableInfoList.value.find { it.tableId == cart.tableId }?.tableName
                     ?: "Bàn ${cart.tableId}",
-                orderItems = emptyList() // Clear current order items
+                orderItems = emptyList(), // Clear current order items,
+                maxPeople = 4
             )
         )
         cart.clear()
