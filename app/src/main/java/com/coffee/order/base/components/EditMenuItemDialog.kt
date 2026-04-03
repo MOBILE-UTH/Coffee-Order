@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.coffee.order.R
+import com.coffee.order.base.GlobalComposeHandler
 
 @Composable
 fun EditMenuItemDialog(
@@ -100,4 +101,31 @@ fun EditMenuItemDialog(
                 })
         }
     })
+}
+
+@Composable
+fun ConfirmDeleteMenuItemDialog(
+    onDismissRequest: () -> Unit,
+    onConfirmDelete: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismissRequest,
+        title = { Text("Xác nhận xóa") },
+        text = { Text("Bạn có chắc chắn muốn xóa món này không?") },
+        confirmButton = {
+            TextButton(onClick = {
+                onConfirmDelete()
+            }
+            ) {
+                Text("Xóa")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = {
+                GlobalComposeHandler.hideGlobalDialog()
+            }) {
+                Text("Hủy")
+            }
+        }
+    )
 }

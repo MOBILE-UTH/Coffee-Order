@@ -2,8 +2,12 @@ package com.coffee.order.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.compose.runtime.Composable
+import com.coffee.order.base.GlobalComposeHandler
 import com.coffee.order.base.MainActivityBaseFragment
+import com.coffee.order.base.components.SelectMenuItemBottomSheet
 import com.coffee.order.databinding.FragmentOrderBinding
+import com.coffee.order.viewmodel.model.MenuItem
 
 class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
     FragmentOrderBinding::inflate
@@ -37,6 +41,10 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
                 items[menuItemId] = newQuantity
             }
         }
+
+        fun getItemQuantity(menuItemId: Long): Int {
+            return items[menuItemId] ?: 0
+        }
     }
 
     private lateinit var cart: Cart
@@ -61,5 +69,18 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
 
     override fun collectStateAndUpdateUi() {
     }
-}
 
+    fun showSelectMenuItemBottomSheet(cart: Cart, menuItems: List<MenuItem>) {
+        GlobalComposeHandler.showGlobalBottomSheet {
+            SelectMenuItemBottomSheet(
+                cart = cart,
+                menuItems = menuItems,
+                onDismiss = { GlobalComposeHandler.hideGlobalBottomSheet() },
+                onConfirm = {
+                    // TODO: Dương Minh Nhân thực hiện cập nhật view theo cart đã chọn ở đây
+                    GlobalComposeHandler.hideGlobalBottomSheet()
+                }
+            )
+        }
+    }
+}
