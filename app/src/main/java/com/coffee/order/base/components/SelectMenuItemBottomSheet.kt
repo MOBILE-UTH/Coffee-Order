@@ -46,8 +46,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coffee.order.fragment.order.OrderFragment
+import com.coffee.order.util.formatPrice
 import com.coffee.order.viewmodel.model.MenuItem
-import java.text.DecimalFormat
 
 
 @Preview
@@ -58,10 +58,10 @@ fun SelectMenuItemBottomSheetPreview() {
         addItem(menuItemId = 2, quantity = 1)
     }
     val sampleMenuItems = listOf(
-        MenuItem(menuItemId = 1, name = "Espresso", category = "Coffee", price = 30000.0),
-        MenuItem(menuItemId = 2, name = "Cappuccino", category = "Coffee", price = 35000.0),
-        MenuItem(menuItemId = 3, name = "Green Tea", category = "Tea", price = 25000.0),
-        MenuItem(menuItemId = 4, name = "Lemonade", category = "Juice", price = 20000.0),
+        MenuItem(menuItemId = 1, name = "Espresso", category = "Coffee", price = 30000),
+        MenuItem(menuItemId = 2, name = "Cappuccino", category = "Coffee", price = 35000),
+        MenuItem(menuItemId = 3, name = "Green Tea", category = "Tea", price = 25000),
+        MenuItem(menuItemId = 4, name = "Lemonade", category = "Juice", price = 20000),
     )
     SelectMenuItemBottomSheet(
         cart = sampleCart,
@@ -254,7 +254,7 @@ fun MenuItemRow(
             Column(modifier = Modifier.weight(1f)) {
                 Text(item.name, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Text(
-                    "${formatPrice(item.price)}đ",
+                    formatPrice(item.price),
                     color = Color(0xFF00623B),
                     fontWeight = FontWeight.SemiBold
                 )
@@ -295,8 +295,4 @@ fun MenuItemRow(
             }
         }
     }
-}
-
-fun formatPrice(price: Double): String {
-    return DecimalFormat("#,###").format(price)
 }

@@ -63,4 +63,13 @@
     <string name="x2">x2</string>
     <string name="traditional_iced_coffee">Traditional Iced Coffee</string>
     <string name="ca_phe_sua">Cà phê sữa</string>
+    <string name="items_served">%1$d Items Served</string>
+    <string name="delete_cart">Xoá giỏ hàng</string>
+    <string name="payment">Thanh toán</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="cancel">Huỷ</string>
+    <string name="confirm_delete_table_title">Xác nhận xoá giỏ hàng</string>
+    <string name="confirm_delete_table_message">Bạn có chắc chắn muốn xoá giỏ hàng này không? Hành động này không thể hoàn tác.</string>
+    <string name="confirm_payment_title">Xác nhận thanh toán</string>
+    <string name="confirm_payment_message">Bạn có chắc chắn muốn thanh toán cho bàn này không?</string>
 </resources>
