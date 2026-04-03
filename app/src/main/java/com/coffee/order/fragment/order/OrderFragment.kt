@@ -1,8 +1,7 @@
-package com.coffee.order.fragment
+package com.coffee.order.fragment.order
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.compose.runtime.Composable
+import android.view.View
 import com.coffee.order.base.GlobalComposeHandler
 import com.coffee.order.base.MainActivityBaseFragment
 import com.coffee.order.base.components.SelectMenuItemBottomSheet
@@ -45,9 +44,16 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
         fun getItemQuantity(menuItemId: Long): Int {
             return items[menuItemId] ?: 0
         }
+
+        fun snapshotItems(): Map<Long, Int> {
+            return items.toMap()
+        }
     }
 
     private lateinit var cart: Cart
+    private val activeOrderListAdapter = ActiveOrderListAdapter()
+    private var latestMenuItems: List<MenuItem> = emptyList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tableId = arguments?.getLong(TABLE_ID_KEY)
@@ -58,13 +64,23 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
         cart = Cart(tableId = tableId)
     }
 
-    @SuppressLint("SetTextI18n")
     override fun setUpEventListeners() {
         binding.apply {
+            buttonAddItems.setOnClickListener {
+                showSelectMenuItemBottomSheet(
+                    cart = cart,
+                    menuItems = appViewModel.menuItems.value
+                )
+            }
+            listViewOrderItems.adapter = activeOrderListAdapter
         }
     }
 
     override fun collectStateAndUpdateUi() {
+        collectFlow(appViewModel.menuItems) { menuItems ->
+            latestMenuItems = menuItems
+            updateActiveOrderItems()
+        }
     }
 
     fun showSelectMenuItemBottomSheet(cart: Cart, menuItems: List<MenuItem>) {
@@ -74,10 +90,46 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
                 menuItems = menuItems,
                 onDismiss = { GlobalComposeHandler.hideGlobalBottomSheet() },
                 onConfirm = {
-                    // TODO: Dương Minh Nhân thực hiện cập nhật view theo cart đã chọn ở đây
+                    updateActiveOrderItems()
                     GlobalComposeHandler.hideGlobalBottomSheet()
                 }
             )
         }
+    }
+
+    private fun updateActiveOrderItems() {
+        val cartItems = cart.snapshotItems()
+        val orderRows = latestMenuItems.mapNotNull { menuItem ->
+            val quantity = cartItems[menuItem.menuItemId] ?: 0
+            if (quantity <= 0) return@mapNotNull null
+            OrderItemUi(
+                menuItemId = menuItem.menuItemId,
+                name = menuItem.name,
+                category = menuItem.category,
+                quantity = quantity,
+                lineTotal = menuItem.price * quantity,
+            )
+        }
+
+        activeOrderListAdapter.submitItems(orderRows)
+        binding.listViewOrderItems.post { expandListHeight() }
+    }
+
+    private fun expandListHeight() {
+        val adapter = binding.listViewOrderItems.adapter ?: return
+        var totalHeight = 0
+        for (i in 0 until adapter.count) {
+            val listItem = adapter.getView(i, null, binding.listViewOrderItems)
+            listItem.measure(
+                View.MeasureSpec.makeMeasureSpec(binding.listViewOrderItems.width, View.MeasureSpec.AT_MOST),
+                View.MeasureSpec.UNSPECIFIED
+            )
+            totalHeight += listItem.measuredHeight
+        }
+        binding.listViewOrderItems.layoutParams = binding.listViewOrderItems.layoutParams.apply {
+            height = totalHeight +
+                (binding.listViewOrderItems.dividerHeight * (adapter.count - 1).coerceAtLeast(0))
+        }
+        binding.listViewOrderItems.requestLayout()
     }
 }

@@ -14,6 +14,7 @@
         android:padding="12dp">
 
         <ImageView
+            android:id="@+id/imageViewMenuItem"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:contentDescription="@string/product_image"
@@ -27,6 +28,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textViewMenuName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ca_phe_sua"
@@ -34,6 +36,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/textViewMenuCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/traditional_iced_coffee"
@@ -42,6 +45,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/textViewQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_gray_rounded"
@@ -52,6 +56,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/textViewLineTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
