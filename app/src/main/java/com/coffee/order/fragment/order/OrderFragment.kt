@@ -1,5 +1,7 @@
 package com.coffee.order.fragment.order
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
@@ -20,6 +22,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import androidx.core.graphics.drawable.toDrawable
 
 class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
     FragmentOrderBinding::inflate
@@ -124,6 +127,8 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
             cardViewSummary.visibility = View.GONE
             linearLayoutActions.visibility = View.GONE
             listViewOrderItems.adapter = activeOrderListAdapter
+            listViewOrderItems.divider = Color.TRANSPARENT.toDrawable()
+            listViewOrderItems.dividerHeight = 16 // px
             binding.textViewTableName.text = tableInfo.tableName
 
             buttonDeleteCart.setOnClickListener {
