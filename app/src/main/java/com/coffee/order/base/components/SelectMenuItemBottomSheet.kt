@@ -78,12 +78,17 @@ fun SelectMenuItemBottomSheet(
     onDismiss: () -> Unit,
     onConfirm: () -> Unit,
 ) {
-    // State để trigger recomposition khi số lượng món thay đổi
+    // Trigger recomposition when cart quantity changes inside this sheet.
     var cartTrigger by remember { mutableIntStateOf(0) }
+    val cartVersion = cartTrigger
 
     val groupedItems = menuItems.groupBy { it.category }
-    val totalPrice = menuItems.sumOf { (cart.getItemQuantity(it.menuItemId)) * it.price }
-    val totalItems = menuItems.sumOf { cart.getItemQuantity(it.menuItemId) }
+    val totalPrice = remember(cartVersion, menuItems) {
+        menuItems.sumOf { (cart.getItemQuantity(it.menuItemId)) * it.price }
+    }
+    val totalItems = remember(cartVersion, menuItems) {
+        menuItems.sumOf { cart.getItemQuantity(it.menuItemId) }
+    }
 
     Column(
         modifier = Modifier
