@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.coffee.order.fragment.SettingFragment"
+        android:name="com.coffee.order.fragment.setting.SettingFragment"
         android:label="@string/tab_setting"
         tools:layout="@layout/fragment_setting" />
 

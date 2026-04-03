@@ -5,39 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".fragment.SettingFragment">
+    tools:context=".fragment.setting.SettingFragment">
 
-    <TextView
-        android:id="@+id/tableInfosTextView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/table_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:textSize="18sp" />
+        android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/menuItemsTextView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menu_item_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:textSize="18sp" />
+        android:layout_weight="1" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/addTableInfoButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add Table Info" />
-
-        <Button
-            android:id="@+id/addMenuItemButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add Menu Item" />
-    </LinearLayout>
 </LinearLayout>
