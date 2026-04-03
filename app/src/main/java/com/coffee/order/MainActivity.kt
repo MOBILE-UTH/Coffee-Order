@@ -8,7 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.coffee.order.base.GlobalComposeHandler
 import com.coffee.order.databinding.ActivityMainBinding
-import com.coffee.order.fragment.OrderFragment
+import com.coffee.order.fragment.order.OrderFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,10 +46,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun navigateToCreateOrder(orderId: Long) {
+    fun navigateToCreateOrder(tableId: Long) {
         navController.navigate(
             resId = R.id.orderFragment,
-            args = OrderFragment.createBundle(orderId = orderId)
+            args = OrderFragment.createBundle(tableId = tableId)
         )
     }
 
