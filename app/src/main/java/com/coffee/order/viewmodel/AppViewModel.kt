@@ -21,11 +21,13 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     val menuItems: StateFlow<List<MenuItem>> = _menuItems
 
     init {
-        _tableInfoList.value = listOf(
-            TableInfo(1, "Bàn 1", TableInfo.Status.EMPTY),
-            TableInfo(2, "Bàn 2", TableInfo.Status.OCCUPIED),
-            TableInfo(3, "Bàn 3", TableInfo.Status.WAITING_FOR_PAYMENT),
-        )
+        _tableInfoList.value = (1..10).map { tableId ->
+            TableInfo(
+                tableId = tableId.toLong(),
+                tableName = "Bàn $tableId",
+                status = TableInfo.Status.entries.random()
+            )
+        }
         _menuItems.value = listOf(
             MenuItem(1, "Cà phê sữa đá", "Coffee", 30000.0),
             MenuItem(2, "Cà phê đen đá", "Coffee", 25000.0),

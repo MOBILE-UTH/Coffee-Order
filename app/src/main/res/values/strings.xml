@@ -19,4 +19,17 @@
     <string name="ord_2094">#ORD-2094</string>
     <string name="today_14_20">Today, 14:20</string>
     <string name="chua_co_lich_su_order">Chua co lich su order</string>
+    <string name="customer">CUSTOMER</string>
+    <string name="marcus_j">Marcus J.</string>
+    <string name="occupied">OCCUPIED</string>
+    <string name="_01">01</string>
+    <string name="capacity">CAPACITY</string>
+    <string name="_4_persons">4 Persons</string>
+    <string name="add_icon">Add Icon</string>
+    <string name="free">FREE</string>
+    <string name="waiting_payment">WAITING PAYMENT</string>
+    <string name="_02">02</string>
+    <string name="_03">03</string>
+    <string name="_2_persons">2 Persons</string>
+    <string name="timer_icon">Timer Icon</string>
 </resources>

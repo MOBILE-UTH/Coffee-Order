@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/managementFragment"
-        android:name="com.coffee.order.fragment.ManagementFragment"
+        android:name="com.coffee.order.fragment.management.ManagementFragment"
         android:label="@string/tab_management"
         tools:layout="@layout/fragment_management" />
 
