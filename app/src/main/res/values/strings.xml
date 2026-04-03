@@ -72,4 +72,17 @@
     <string name="confirm_delete_table_message">Bạn có chắc chắn muốn xoá giỏ hàng này không? Hành động này không thể hoàn tác.</string>
     <string name="confirm_payment_title">Xác nhận thanh toán</string>
     <string name="confirm_payment_message">Bạn có chắc chắn muốn thanh toán cho bàn này không?</string>
+    <string name="add_table">Thêm bàn</string>
+    <string name="add_table_title">Thêm bàn mới</string>
+    <string name="table_name">Tên bàn</string>
+    <string name="table_capacity">Sức chứa</string>
+    <string name="table_id_preview">Mã bàn sẽ tạo: %1$s</string>
+    <string name="table_name_hint">Ví dụ: Bàn VIP 1</string>
+    <string name="table_capacity_hint">Ví dụ: 4</string>
+    <string name="save">Lưu</string>
+    <string name="cancel">Hủy</string>
+    <string name="table_name_required">Vui lòng nhập tên bàn</string>
+    <string name="table_capacity_required">Vui lòng nhập sức chứa</string>
+    <string name="table_capacity_invalid">Sức chứa phải lớn hơn 0</string>
+    <string name="b_n_m_i_s_m_c_nh_tr_ng_th_i_tr_ng">Bàn mới sẽ mặc định ở trạng thái TRỐNG.</string>
 </resources>

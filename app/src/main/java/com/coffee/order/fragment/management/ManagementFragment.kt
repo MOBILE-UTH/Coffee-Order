@@ -6,7 +6,7 @@ import com.coffee.order.databinding.FragmentManagementBinding
 
 /**
  * Màn hình quản lý thông tin về các bàn trong quán,
- * hiển thị trạng thái của từng bàn (trống, có khách, đang chờ thanh toán)
+ * hiển thị trạng thái của từng bàn (trống, có khách,)
  * và cho phép nhân viên quản lý dễ dàng theo dõi tình hình phục vụ.
  */
 class ManagementFragment : MainActivityBaseFragment<FragmentManagementBinding>(
@@ -19,10 +19,17 @@ class ManagementFragment : MainActivityBaseFragment<FragmentManagementBinding>(
     )
 
     override fun setUpEventListeners() {
-        binding.tableManagementGrid.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            adapter = tableGridAdapter
-
+        binding.apply {
+            tableManagementGrid.apply {
+                layoutManager = GridLayoutManager(context, 2)
+                adapter = tableGridAdapter
+            }
+            buttonAddTable.setOnClickListener {
+                AddTableBottomSheetDialogFragment().show(
+                    childFragmentManager,
+                    "AddTableBottomSheet"
+                )
+            }
         }
     }
 

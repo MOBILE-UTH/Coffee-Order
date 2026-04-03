@@ -3,6 +3,7 @@ package com.coffee.order.viewmodel.model
 data class TableInfo(
     val tableId: Long,
     val tableName: String,
+    val maxPeople: Int,
     val orderItems: List<OrderItem> = emptyList(),
     val isPayment: Boolean = false,
 ) {
