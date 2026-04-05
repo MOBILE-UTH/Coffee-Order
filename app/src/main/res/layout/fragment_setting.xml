@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:text="@string/th_m_m_n_m_i"
+        android:text="@string/add_menu_item"
         android:textColor="#FFFFFF"
         app:backgroundTint="#88C7BC"
         app:cornerRadius="24dp"

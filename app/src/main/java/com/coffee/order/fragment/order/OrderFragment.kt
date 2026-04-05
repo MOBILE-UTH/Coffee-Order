@@ -1,10 +1,8 @@
 package com.coffee.order.fragment.order
 
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
-import androidx.activity.OnBackPressedCallback
 import com.coffee.order.R
 import com.coffee.order.base.GlobalComposeHandler
 import com.coffee.order.base.MainActivityBaseFragment
@@ -93,17 +91,6 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
         tableInfo.orderItems.forEach { orderItem ->
             cart.addItem(orderItem.menuItemId, orderItem.quantity)
         }
-
-
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    updateTableInfoFromCart()
-                    findNavController().popBackStack()
-                }
-            }
-        )
     }
 
     private fun updateTableInfoFromCart() {
@@ -137,6 +124,9 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
 
             buttonPayment.setOnClickListener {
                 showPaymentConfirmation()
+            }
+            buttonBack.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }
@@ -218,6 +208,7 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
 
             activeOrderListAdapter.submitItems(orderRows)
             binding.listViewOrderItems.post { expandListHeight() }
+            updateTableInfoFromCart()
             if (orderRows.isEmpty()) {
                 binding.cardViewSummary.visibility = View.GONE
                 binding.linearLayoutActions.visibility = View.GONE

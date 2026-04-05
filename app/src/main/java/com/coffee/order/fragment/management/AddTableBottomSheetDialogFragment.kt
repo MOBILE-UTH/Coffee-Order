@@ -30,10 +30,6 @@ class AddTableBottomSheetDialogFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val nextTableId = getNextTableId()
-        binding.textViewTableIdPreview.text = getString(
-            com.coffee.order.R.string.table_id_preview,
-            nextTableId.toString().padStart(2, '0')
-        )
 
         binding.buttonCancel.setOnClickListener { dismiss() }
         binding.buttonSave.setOnClickListener {
