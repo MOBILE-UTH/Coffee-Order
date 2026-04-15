@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
+    android:background="@color/background"
     android:orientation="vertical"
     android:padding="20dp">
 
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_table_title"
-        android:textColor="@color/primary_text_color"
+        android:textColor="@color/text_primary"
         android:textSize="22sp"
         android:textStyle="bold" />
 
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/default_table_message"
-        android:textColor="#8C8C8C"
+        android:textColor="@color/text_tertiary"
         android:textSize="13sp" />
 
     <LinearLayout
@@ -68,8 +68,8 @@
             android:layout_weight="1"
             android:text="@string/cancel"
             android:textAllCaps="false"
-            android:textColor="@color/primary_text_color"
-            app:backgroundTint="#E0E0E0"
+            android:textColor="@color/text_secondary"
+            app:backgroundTint="@color/surface_variant"
             app:cornerRadius="16dp" />
 
         <Space
@@ -83,7 +83,7 @@
             android:layout_weight="1"
             android:text="@string/save"
             android:textAllCaps="false"
-            app:backgroundTint="#00623B"
+            app:backgroundTint="@color/primary"
             app:cornerRadius="16dp" />
     </LinearLayout>
 

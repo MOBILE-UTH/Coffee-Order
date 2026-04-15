@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
     app:cardCornerRadius="16dp"
-    app:cardElevation="1dp">
+    app:cardElevation="1dp"
+    app:cardBackgroundColor="@color/surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ca_phe_sua"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -40,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/traditional_iced_coffee"
-                android:textColor="@color/black"
+                android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -48,10 +50,10 @@
             android:id="@+id/textViewQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_gray_rounded"
             android:paddingHorizontal="8dp"
             android:paddingVertical="2dp"
             android:text="@string/x2"
+            android:textColor="@color/text_primary"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/_58_000"
+            android:textColor="@color/primary"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>

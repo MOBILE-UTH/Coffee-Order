@@ -4,84 +4,62 @@
     android:id="@+id/layoutProductItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#F8F9FA"
-    android:padding="16dp">
+    android:background="#FFFFFF"
+    android:padding="12dp">
 
-    <TextView
-        android:id="@+id/tvProductId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/_103"
-        android:textColor="#8C8C8C"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
+    <!-- Ảnh món ăn (Glide load từ network) -->
+    <ImageView
+        android:id="@+id/ivProductImage"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="#F0EDE8"
+        android:contentDescription="@string/product_image"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvProductName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Tên món -->
     <TextView
         android:id="@+id/tvProductName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/tra_dao_cam_sa"
-        android:textColor="#262626"
-        android:textSize="18sp"
+        android:textColor="#1A1A1A"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tvProductPrice"
-        app:layout_constraintStart_toEndOf="@id/tvProductId"
+        app:layout_constraintBottom_toTopOf="@id/tvCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivProductImage"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Danh mục -->
     <TextView
         android:id="@+id/tvCategory"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/drinks"
-        android:textColor="#006437"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@id/tvProductName"
+        android:layout_marginStart="12dp"
+        android:textColor="#4CAF50"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@id/tvProductPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivProductImage"
         app:layout_constraintTop_toBottomOf="@id/tvProductName" />
 
+    <!-- Giá -->
     <TextView
         android:id="@+id/tvProductPrice"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="@string/_30_000"
-        android:textColor="#262626"
-        android:textSize="20sp"
+        android:layout_marginStart="12dp"
+        android:textColor="#E64A19"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnEditProduct"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/btnEditProduct"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="12dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="2dp"
-        android:src="@drawable/ic_edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDeleteProduct"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="#595959" />
-
-    <ImageView
-        android:id="@+id/btnDeleteProduct"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="2dp"
-        android:src="@drawable/ic_delete"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="#595959" />
+        app:layout_constraintStart_toEndOf="@id/ivProductImage"
+        app:layout_constraintTop_toBottomOf="@id/tvCategory" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

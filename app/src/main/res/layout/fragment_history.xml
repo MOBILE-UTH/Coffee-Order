@@ -6,17 +6,17 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".fragment.history.HistoryFragment">
+    tools:context=".employee.fragment.history.HistoryFragment">
 
     <TextView
         android:id="@+id/historyEmptyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingVertical="12dp"
+        android:layout_centerInParent="true"
         android:text="@string/empty_history"
         android:textColor="#8C8C8C"
-        android:textSize="14sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/historyRecyclerView"

@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Coffee Order"
 include(":app")
+include(":shared")
+include(":server")

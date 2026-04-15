@@ -1,4 +1,44 @@
 <resources>
 
-    <style name="Theme.CoffeeOrder" parent="Theme.Material3.DayNight.NoActionBar" />
+    <style name="Theme.CoffeeOrder" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary Brand Color - Vibrant Orange (adjusted for dark) -->
+        <item name="colorPrimary">@color/primary_light</item>
+        <item name="colorOnPrimary">@color/primary_dark</item>
+        <item name="colorPrimaryContainer">@color/primary_dark</item>
+        <item name="colorOnPrimaryContainer">@color/primary_light</item>
+
+        <!-- Secondary Brand Color -->
+        <item name="colorSecondary">@color/secondary_light</item>
+        <item name="colorOnSecondary">@color/primary_dark</item>
+        <item name="colorSecondaryContainer">@color/primary_dark</item>
+        <item name="colorOnSecondaryContainer">@color/secondary_light</item>
+
+        <!-- Tertiary Color -->
+        <item name="colorTertiary">@color/primary_light</item>
+        <item name="colorOnTertiary">@color/primary_dark</item>
+        <item name="colorTertiaryContainer">@color/primary_dark</item>
+        <item name="colorOnTertiaryContainer">@color/primary_light</item>
+
+        <!-- Error Color -->
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="colorErrorContainer">#5F1F1F</item>
+        <item name="colorOnErrorContainer">@color/error</item>
+
+        <!-- Background & Surface (Dark) -->
+        <item name="android:colorBackground">#0F172A</item>
+        <item name="colorSurface">#1E293B</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurfaceVariant">#334155</item>
+        <item name="colorOnSurfaceVariant">#CBD5E1</item>
+
+        <!-- Outline and Scrim -->
+        <item name="colorOutline">#CBD5E1</item>
+
+        <!-- Text Colors (Light for dark background) -->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorSecondary">#CBD5E1</item>
+        <item name="android:textColorTertiary">#94A3B8</item>
+    </style>
 </resources>
+
