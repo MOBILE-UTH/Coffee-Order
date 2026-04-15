@@ -1,0 +1,52 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+skinparam usecaseFontSize 12
+skinparam packageFontSize 14
+skinparam packageFontStyle bold
+skinparam usecaseBackgroundColor #FFF3E0
+skinparam usecaseBorderColor #E65100
+
+title Sơ đồ Use Case — Quy trình Đặt hàng & Thanh toán
+
+actor "Nhân viên" as Staff #8BC34A
+
+rectangle "Module Đặt hàng" {
+  usecase "Xem danh sách bàn\n(ManagementFragment)" as UC1
+  usecase "Thêm bàn mới\n(AddTableBottomSheet)" as UC2
+  usecase "Xem trạng thái bàn\n(Trống / Đang dùng)" as UC3
+  usecase "Chọn bàn\n→ OrderFragment" as UC4
+  usecase "Xem menu sản phẩm\n(BottomSheet)" as UC5
+  usecase "Thêm món vào giỏ\n(Cart.addItem)" as UC6
+  usecase "Tăng/Giảm số lượng" as UC7
+  usecase "Xóa món khỏi giỏ\n(Cart.removeItem)" as UC8
+  usecase "Gửi đơn hàng\n(POST /api/orders)" as UC9
+  usecase "Xác nhận thanh toán\n(showPaymentConfirmation)" as UC10
+  usecase "Xử lý thanh toán\n(PUT /api/orders/{id}/pay)" as UC11
+  usecase "Tính VAT 10%" as UC12
+  usecase "Xóa toàn bộ giỏ hàng\n(Cart.clear)" as UC13
+  usecase "Cập nhật trạng thái bàn" as UC14
+}
+
+Staff --> UC1
+Staff --> UC2
+Staff --> UC3
+Staff --> UC4
+
+UC4 --> UC5 : nhấn "Add Items"
+UC5 --> UC6 : chọn sản phẩm
+UC6 --> UC7 : <<extend>>
+UC6 --> UC8 : <<extend>>
+UC6 --> UC9 : nhấn "Submit"
+UC9 --> UC14 : <<include>>
+
+UC4 --> UC10 : nhấn "Payment"
+UC10 --> UC12 : <<include>>
+UC10 --> UC11 : xác nhận
+UC11 --> UC14 : <<include>>
+
+UC4 --> UC13 : nhấn "Delete Cart"
+
+@enduml

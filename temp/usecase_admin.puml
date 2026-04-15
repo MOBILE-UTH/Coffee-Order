@@ -1,0 +1,55 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+skinparam usecaseFontSize 12
+skinparam packageFontSize 14
+skinparam packageFontStyle bold
+skinparam usecaseBackgroundColor #F3E5F5
+skinparam usecaseBorderColor #7B1FA2
+
+title Sơ đồ Use Case — Quản trị viên (Admin Only)
+
+actor "Chủ quán\n(Owner)" as Admin #FF9800
+
+rectangle "Quản lý Menu (AdminMenuScreen)" {
+  usecase "Xem danh sách menu\n(GET /api/menu)" as UC_M1
+  usecase "Thêm sản phẩm mới\n(POST /api/menu)" as UC_M2
+  usecase "Upload hình ảnh\n(POST /api/menu/{id}/image)" as UC_M3
+  usecase "Sửa sản phẩm\n(PUT /api/menu/{id})" as UC_M4
+  usecase "Xóa sản phẩm\n(DELETE /api/menu/{id})" as UC_M5
+  usecase "Xác nhận xóa\n(ConfirmDeleteDialog)" as UC_M6
+}
+
+rectangle "Quản lý Nhân sự (AdminStaffScreen)" {
+  usecase "Xem danh sách nhân viên\n(GET /api/users/employees)" as UC_S1
+  usecase "Tạo tài khoản nhân viên\n(POST /api/auth/register)" as UC_S2
+  usecase "Xóa nhân viên\n(DELETE /api/users/{id})" as UC_S3
+}
+
+rectangle "Thống kê (AdminDashboardScreen)" {
+  usecase "Xem doanh thu hôm nay" as UC_D1
+  usecase "Xem tổng đơn hàng hôm nay" as UC_D2
+  usecase "Xem Top 5 sản phẩm\nbán chạy nhất" as UC_D3
+  usecase "Xem lịch sử đơn hàng\n(AdminHistoryScreen)" as UC_D4
+}
+
+Admin --> UC_M1
+Admin --> UC_M2
+Admin --> UC_M4
+Admin --> UC_M5
+
+Admin --> UC_S1
+Admin --> UC_S2
+Admin --> UC_S3
+
+Admin --> UC_D1
+Admin --> UC_D2
+Admin --> UC_D3
+Admin --> UC_D4
+
+UC_M2 ..> UC_M3 : <<extend>>
+UC_M5 ..> UC_M6 : <<include>>
+
+@enduml

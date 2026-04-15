@@ -1,0 +1,60 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam classFontSize 13
+skinparam classAttributeFontSize 11
+
+title Sơ đồ ER — Cơ sở dữ liệu Coffee Order\n(JetBrains Exposed ORM)
+
+entity "Users" as users {
+  * **id** : Long <<PK>>
+  --
+  * username : Varchar(50) <<unique>>
+  * password_hash : Varchar(255)
+  * display_name : Varchar(100)
+  * role : Varchar(20)
+  .. role ∈ {OWNER, EMPLOYEE} ..
+}
+
+entity "MenuItems" as menu {
+  * **id** : Long <<PK>>
+  --
+  * name : Varchar(100)
+  * category : Varchar(50)
+  * price : Integer
+  image_url : Varchar(255) <<nullable>>
+}
+
+entity "CoffeeTables" as tables {
+  * **id** : Long <<PK>>
+  --
+  * name : Varchar(100)
+  * max_people : Integer
+}
+
+entity "Orders" as orders {
+  * **id** : Long <<PK>>
+  --
+  * table_id : Long <<FK>>
+  * staff_id : Long <<FK>>
+  * total_price : Double
+  * payment_method : Varchar(20)
+  * is_paid : Boolean
+  * created_at : Varchar(30)
+  .. payment_method ∈ {CASH, TRANSFER} ..
+}
+
+entity "OrderLineItems" as lineitems {
+  * **order_id** : Long <<PK, FK>>
+  * **menu_item_id** : Long <<PK, FK>>
+  --
+  * quantity : Integer
+  * unit_price : Integer
+}
+
+users ||--o{ orders : "staff_id\n(1 nhân viên → N đơn)"
+tables ||--o{ orders : "table_id\n(1 bàn → N đơn)"
+orders ||--|{ lineitems : "order_id\n(1 đơn → N chi tiết)"
+menu ||--o{ lineitems : "menu_item_id\n(1 sản phẩm → N chi tiết)"
+
+@enduml

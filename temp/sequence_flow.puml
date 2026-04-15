@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+actor User as "Employee / Owner"
+participant UI as "Activity / Fragment"
+participant AppViewModel as "AppViewModel"
+participant AppRepository as "CoffeeOrderRepository"
+participant KtorServer as "Ktor Backend"
+
+User -> UI: Tương tác (VD: Mở danh sách bàn)
+UI -> AppViewModel: Gửi event (VD: fetchTables())
+activate AppViewModel
+AppViewModel -> AppViewModel: Cập nhật State (isLoading = true)
+AppViewModel -> AppRepository: Gọi API (VD: getAllTable())
+activate AppRepository
+
+AppRepository -> KtorServer: Gửi Request HTTP/GET
+activate KtorServer
+KtorServer -> KtorServer: Truy vấn Database
+KtorServer --> AppRepository: Trả về HTTP 200 (JSON DTOs)
+deactivate KtorServer
+
+AppRepository --> AppViewModel: Trả về Result.success(tables)
+deactivate AppRepository
+
+AppViewModel -> AppViewModel: Cập nhật State với dữ liệu mới
+AppViewModel -> AppViewModel: Cập nhật State (isLoading = false)
+AppViewModel --> UI: Render UI với State mới
+deactivate AppViewModel
+@enduml

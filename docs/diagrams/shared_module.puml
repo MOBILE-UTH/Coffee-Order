@@ -1,0 +1,11 @@
+@startuml
+!theme plain
+package "Shared Module" {
+    class LoginRequest
+    class LoginResponse
+    class MenuItemDto
+    class OrderItemDto
+    class TableDto
+    class DashboardStatsDto
+}
+@enduml

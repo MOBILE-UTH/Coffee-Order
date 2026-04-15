@@ -1,0 +1,104 @@
+@startuml
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+skinparam usecaseFontSize 13
+skinparam packageFontSize 15
+skinparam packageFontStyle bold
+skinparam arrowColor #555555
+skinparam usecaseBackgroundColor #E8F5E9
+skinparam usecaseBorderColor #388E3C
+
+title Sơ đồ Use Case tổng quan — Coffee Order System
+
+actor "Nhân viên\n(Employee)" as Staff #8BC34A
+actor "Chủ quán\n(Owner/Admin)" as Admin #FF9800
+
+rectangle "Hệ thống Coffee Order" as System {
+
+  package "Xác thực" as AuthPkg {
+    usecase "Đăng nhập\n(Login)" as UC_Login
+    usecase "Đăng xuất\n(Logout)" as UC_Logout
+    usecase "Cấu hình Server URL" as UC_Config
+  }
+
+  package "Quản lý Bàn" as TablePkg {
+    usecase "Xem danh sách bàn" as UC_ViewTables
+    usecase "Thêm bàn mới" as UC_AddTable
+    usecase "Xem trạng thái bàn\n(trống/đang dùng)" as UC_TableStatus
+  }
+
+  package "Đặt hàng & Thanh toán" as OrderPkg {
+    usecase "Chọn bàn để đặt hàng" as UC_SelectTable
+    usecase "Thêm món vào giỏ hàng" as UC_AddToCart
+    usecase "Xóa món khỏi giỏ hàng" as UC_RemoveFromCart
+    usecase "Gửi đơn hàng\n(Submit Order)" as UC_SubmitOrder
+    usecase "Thanh toán đơn hàng\n(Cash/Transfer)" as UC_Payment
+    usecase "Xóa giỏ hàng" as UC_ClearCart
+  }
+
+  package "Quản lý Menu" as MenuPkg {
+    usecase "Xem danh sách sản phẩm" as UC_ViewMenu
+    usecase "Thêm sản phẩm mới" as UC_AddMenuItem
+    usecase "Sửa thông tin sản phẩm" as UC_EditMenuItem
+    usecase "Xóa sản phẩm" as UC_DeleteMenuItem
+    usecase "Upload hình ảnh sản phẩm" as UC_UploadImage
+  }
+
+  package "Quản lý Nhân sự" as StaffPkg {
+    usecase "Xem danh sách nhân viên" as UC_ViewStaff
+    usecase "Tạo tài khoản nhân viên" as UC_CreateEmployee
+    usecase "Xóa nhân viên" as UC_DeleteEmployee
+  }
+
+  package "Thống kê & Lịch sử" as StatsPkg {
+    usecase "Xem lịch sử đơn hàng" as UC_ViewHistory
+    usecase "Xem doanh thu hôm nay" as UC_ViewRevenue
+    usecase "Xem top sản phẩm bán chạy" as UC_TopSellers
+    usecase "Xem tổng đơn hàng hôm nay" as UC_TotalOrders
+  }
+}
+
+' ── Staff connections ──
+Staff --> UC_Login
+Staff --> UC_Logout
+Staff --> UC_Config
+Staff --> UC_ViewTables
+Staff --> UC_AddTable
+Staff --> UC_TableStatus
+Staff --> UC_SelectTable
+Staff --> UC_ViewHistory
+Staff --> UC_ViewMenu
+
+' ── Admin connections ──
+Admin --> UC_Login
+Admin --> UC_Logout
+
+Admin --> UC_ViewMenu
+Admin --> UC_AddMenuItem
+Admin --> UC_EditMenuItem
+Admin --> UC_DeleteMenuItem
+Admin --> UC_UploadImage
+
+Admin --> UC_ViewStaff
+Admin --> UC_CreateEmployee
+Admin --> UC_DeleteEmployee
+
+Admin --> UC_ViewHistory
+Admin --> UC_ViewRevenue
+Admin --> UC_TopSellers
+Admin --> UC_TotalOrders
+
+' ── Relationships ──
+UC_SelectTable ..> UC_AddToCart : <<include>>
+UC_AddToCart ..> UC_SubmitOrder : <<include>>
+UC_SelectTable ..> UC_RemoveFromCart : <<extend>>
+UC_SelectTable ..> UC_ClearCart : <<extend>>
+UC_SubmitOrder ..> UC_Payment : <<extend>>
+UC_AddMenuItem ..> UC_UploadImage : <<extend>>
+
+' ── Inheritance ──
+Admin --|> Staff : inherits
+
+@enduml

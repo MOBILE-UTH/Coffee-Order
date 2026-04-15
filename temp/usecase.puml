@@ -1,0 +1,33 @@
+@startuml
+!theme plain
+left to right direction
+
+actor "Nhân viên (Employee)" as employee
+actor "Chủ quán (Owner)" as owner
+
+owner -|> employee : Kế thừa quyền
+
+package "Coffee Order System" {
+    
+    usecase "Đăng nhập" as UC_Login
+    usecase "Quản lý Đơn hàng & Bàn" as UC_Order
+    usecase "Thanh toán Đơn hàng" as UC_Pay
+    usecase "Xem lịch sử Đơn hàng" as UC_History
+    
+    usecase "Quản lý Bàn (Thêm/Sửa/Xóa)" as UC_ManageTable
+    usecase "Quản lý Menu (Món & Giá)" as UC_ManageMenu
+    usecase "Quản lý Nhân Viên" as UC_ManageStaff
+    usecase "Xem Báo Cáo Thống Kê" as UC_Dashboard
+}
+
+employee --> UC_Login
+employee --> UC_Order
+employee --> UC_Pay
+employee --> UC_History
+
+owner --> UC_ManageTable
+owner --> UC_ManageMenu
+owner --> UC_ManageStaff
+owner --> UC_Dashboard
+
+@enduml

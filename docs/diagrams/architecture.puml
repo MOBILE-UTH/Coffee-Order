@@ -1,0 +1,30 @@
+@startuml
+!theme plain
+skinparam componentStyle rectangle
+
+package "Coffee-Order System" {
+    
+    node "Android Client (App)" {
+        [UI Layer (Compose & XML/Fragments)]
+        [ViewModel (StateFlow)]
+        [Repository]
+        [Ktor Client (Network)]
+    }
+
+    node "Backend (Server)" {
+        [Ktor Server (Routing)]
+        [Server Repositories]
+        [Exposed ORM]
+        database "H2 Database"
+    }
+
+    cloud "Shared Module" {
+        [DTOs & Models]
+    }
+}
+
+[Ktor Client (Network)] <..> [Ktor Server (Routing)] : HTTP/REST (JSON)
+[Ktor Client (Network)] --> [DTOs & Models] : Sử dụng chung
+[Ktor Server (Routing)] --> [DTOs & Models] : Sử dụng chung
+[Server Repositories] --> "H2 Database" : SQL Query
+@enduml

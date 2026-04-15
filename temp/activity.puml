@@ -1,0 +1,52 @@
+@startuml
+!theme plain
+skinparam defaultTextAlignment center
+
+|Nhân Viên (Client)|
+start
+:Đăng nhập thành công vòng giao diện chính;
+:Xem danh sách trạng thái Bàn;
+
+if (Khách chọn bàn mới?) then (Đúng)
+    :Chọn bàn đang chưa có người (trống);
+else (Sai)
+    :Chọn bàn khách đang ngồi;
+endif
+
+:Mở giao diện Đặt món (Order);
+:Thêm / Sửa / Xóa các đồ uống vào giỏ hàng (Cart);
+
+:Bấm "Xác nhận";
+
+|Server Backend|
+:Nhận danh sách Item & TableId;
+:Tính toán tổng tiền (Giá x Số lượng);
+:Tạo record mới trong bảng "Orders" (nếu bàn trống)
+HOẶC Cập nhật "Orders" (nếu bàn đang có khách);
+:Ghi nhận "OrderLineItems";
+:Trả về trạng thái thành công;
+
+|Nhân Viên (Client)|
+:Hiển thị Cập nhật đơn hàng thành công;
+:Bàn hiển thị trạng thái "Đang phục vụ" (Occupied);
+
+note right
+  Khách dùng đồ uống...
+end note
+
+:Khách hàng gọi thanh toán;
+:Bấm nút "Thanh toán";
+
+|Server Backend|
+:Xác thực trạng thái đơn;
+:Cập nhật is_paid = true;
+:Lưu thời gian tạo hóa đơn;
+:Trả về trạng thái thành công;
+
+|Nhân Viên (Client)|
+:Đóng hóa đơn;
+:Cập nhật Bàn trở về trạng thái "Trống";
+:Hoàn tất luồng phục vụ;
+
+stop
+@enduml
