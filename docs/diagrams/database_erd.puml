@@ -1,0 +1,55 @@
+@startuml
+!theme plain
+hide circle
+skinparam linetype ortho
+
+entity "users" as users {
+  * id : Long <<PK>>
+  --
+  username : VARCHAR.UNIQUE
+  password_hash : VARCHAR
+  display_name : VARCHAR
+  role : VARCHAR (OWNER, EMPLOYEE)
+}
+
+entity "menu_items" as menu_items {
+  * id : Long <<PK>>
+  --
+  name : VARCHAR
+  category : VARCHAR
+  price : Int
+  image_url : VARCHAR
+}
+
+entity "coffee_tables" as coffee_tables {
+  * id : Long <<PK>>
+  --
+  name : VARCHAR
+  max_people : Int
+}
+
+entity "orders" as orders {
+  * id : Long <<PK>>
+  --
+  table_id : Long <<FK>>
+  staff_id : Long <<FK>>
+  total_price : Double
+  payment_method : VARCHAR
+  is_paid : Boolean
+  created_at : VARCHAR
+}
+
+entity "order_line_items" as order_line_items {
+  * order_id : Long <<PK, FK>>
+  * menu_item_id : Long <<PK, FK>>
+  --
+  quantity : Int
+  unit_price : Int
+}
+
+users ||..o{ orders : "Tạo đơn"
+coffee_tables ||..o{ orders : "Chứa đơn"
+orders ||..|{ order_line_items : "Có các món"
+menu_items ||..o{ order_line_items : "Chi tiết món ăn"
+
+@enduml

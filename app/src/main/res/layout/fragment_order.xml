@@ -4,30 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7F8"
+    android:background="@color/background"
     android:orientation="vertical">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/button_back"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#FFFFFF"
-            app:navigationIcon="@drawable/ic_back"
-            app:title="Chi tiết bàn"
-            app:titleTextColor="#1D1D1D" />
-    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#E6E8EA">
+        android:background="@color/background">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,6 +22,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface_variant"
                 app:cardCornerRadius="24.dp"
                 app:cardElevation="2.dp">
 
@@ -53,7 +38,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/brew_amp_balance"
-                        android:textColor="#1D1D1D"
+                        android:textColor="@color/text_primary"
                         android:textSize="32sp"
                         android:textStyle="bold" />
 
@@ -61,7 +46,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/standard_dining_area_premium_service"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/text_secondary" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -77,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/active_order"
-                    android:textColor="#1D1D1D"
+                    android:textColor="@color/text_primary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -86,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_3_items_served"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text_primary"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -105,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:cardBackgroundColor="#F2F4F5"
+                app:cardBackgroundColor="@color/surface_variant"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp">
 
@@ -126,14 +111,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/subtotal"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/text_primary" />
 
                         <TextView
                             android:id="@+id/textViewSubtotal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/_131_000"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/text_primary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -146,21 +131,21 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/vat_10"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/text_primary" />
 
                         <TextView
                             android:id="@+id/textViewVAT"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/_13_100"
-                            android:textColor="#1D1D1D" />
+                            android:textColor="@color/text_primary" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginVertical="16dp"
-                        android:background="@color/black" />
+                        android:background="@color/primary_light" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -173,6 +158,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/total_due"
+                            android:textColor="@color/text_primary"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -181,7 +167,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/_144_100"
-                            android:textColor="#00623B"
+                            android:textColor="@color/primary"
                             android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -193,7 +179,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="#00623B"
+                android:backgroundTint="@color/primary"
                 android:text="@string/add_items"
                 android:textAllCaps="false"
                 android:textSize="18sp"
@@ -203,8 +189,7 @@
                 android:id="@+id/linearLayoutActions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="32dp"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
@@ -213,11 +198,10 @@
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#EB7873"
+                    android:backgroundTint="@color/error"
                     android:text="@string/delete_cart"
                     android:textColor="@color/white"
-                    app:cornerRadius="16dp"
-                    app:icon="@drawable/ic_delete" />
+                    app:cornerRadius="16dp" />
 
                 <Space
                     android:layout_width="12dp"
@@ -229,10 +213,10 @@
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#00623B"
+                    android:backgroundTint="@color/success"
                     android:text="@string/payment"
-                    app:cornerRadius="16dp"
-                    app:icon="@drawable/ic_wallet" />
+                    android:textColor="@color/white"
+                    app:cornerRadius="16dp" />
             </LinearLayout>
 
         </LinearLayout>

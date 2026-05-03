@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import com.coffee.order.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.coffee.order.databinding.BottomSheetAddTableBinding
 import com.coffee.order.viewmodel.AppViewModel
@@ -64,16 +65,16 @@ class AddTableBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
         var isValid = true
         if (name.isBlank()) {
-            binding.textInputLayoutTableName.error = getString(com.coffee.order.R.string.table_name_required)
+            binding.textInputLayoutTableName.error = getString(R.string.table_name_required)
             isValid = false
         }
 
         val capacity = capacityText.toIntOrNull()
         if (capacityText.isBlank()) {
-            binding.textInputLayoutTableCapacity.error = getString(com.coffee.order.R.string.table_capacity_required)
+            binding.textInputLayoutTableCapacity.error = getString(R.string.table_capacity_required)
             isValid = false
         } else if (capacity == null || capacity <= 0) {
-            binding.textInputLayoutTableCapacity.error = getString(com.coffee.order.R.string.table_capacity_invalid)
+            binding.textInputLayoutTableCapacity.error = getString(R.string.table_capacity_invalid)
             isValid = false
         }
 
@@ -81,7 +82,7 @@ class AddTableBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun getNextTableId(): Long {
-        return (appViewModel.tableInfoList.value.maxOfOrNull { it.tableId } ?: 0L) + 1L
+        return (appViewModel.uiState.value.tableInfoList.maxOfOrNull { it.tableId } ?: 0L) + 1L
     }
 }
 

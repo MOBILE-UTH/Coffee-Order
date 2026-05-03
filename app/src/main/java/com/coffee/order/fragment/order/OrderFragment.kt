@@ -1,12 +1,12 @@
-package com.coffee.order.fragment.order
+package com.coffee.order.feature.employee.fragment.order
 
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import com.coffee.order.R
 import com.coffee.order.base.GlobalComposeHandler
-import com.coffee.order.base.MainActivityBaseFragment
-import com.coffee.order.base.components.SelectMenuItemBottomSheet
+import com.coffee.order.base.EmployeeBaseFragment
+import com.coffee.order.feature.employee.component.SelectMenuItemBottomSheet
 import com.coffee.order.databinding.FragmentOrderBinding
 import com.coffee.order.util.formatPrice
 import com.coffee.order.viewmodel.model.MenuItem
@@ -14,15 +14,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import androidx.navigation.fragment.findNavController
-import com.coffee.order.viewmodel.model.HistoryOrder
-import com.coffee.order.viewmodel.model.TableInfo
+import com.coffee.order.domain.model.TableInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 import androidx.core.graphics.drawable.toDrawable
 
-class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
+class OrderFragment : EmployeeBaseFragment<FragmentOrderBinding>(
     FragmentOrderBinding::inflate
 ) {
 
@@ -80,9 +76,9 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tableId = arguments?.getLong(TABLE_ID_KEY)
-        val existingTable = appViewModel.tableInfoList.value.find { it.tableId == tableId }
+        val existingTable = appViewModel.uiState.value.tableInfoList.find { it.tableId == tableId }
         if (tableId == null || existingTable == null) {
-            mainActivity.onBackPressedDispatcher.onBackPressed()
+            employeeActivity.onBackPressedDispatcher.onBackPressed()
             return
         }
         // Initialize cart with existing order items if any
@@ -94,6 +90,7 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
     }
 
     private fun updateTableInfoFromCart() {
+        // Update local UI state; the actual server sync happens on submit/pay
         appViewModel.updateTableInfo(
             tableInfo.copy(
                 orderItems = cart.snapshotItems().map {
@@ -108,7 +105,7 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
             buttonAddItems.setOnClickListener {
                 showSelectMenuItemBottomSheet(
                     cart = cart,
-                    menuItems = appViewModel.menuItems.value
+                    menuItems = appViewModel.uiState.value.menuItems
                 )
             }
             cardViewSummary.visibility = View.GONE
@@ -124,9 +121,6 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
 
             buttonPayment.setOnClickListener {
                 showPaymentConfirmation()
-            }
-            buttonBack.setOnClickListener {
-                findNavController().popBackStack()
             }
         }
     }
@@ -157,49 +151,27 @@ class OrderFragment : MainActivityBaseFragment<FragmentOrderBinding>(
 
     private fun processPayment() {
         val cartItems = cart.snapshotItems()
-        val menuItems = appViewModel.menuItems.value
-        val orderedMenuItems = cartItems.mapNotNull { (menuItemId, quantity) ->
-            menuItems.find { it.menuItemId == menuItemId }?.copy() // copy to avoid reference issues
+        if (cartItems.isEmpty()) return
+
+        // First submit/update the order on the server, then pay it
+        appViewModel.submitOrder(cart.tableId, cartItems) {
+            appViewModel.payOrder(cart.tableId) {
+                cart.clear()
+                findNavController().popBackStack()
+            }
         }
-
-        val subTotal = orderedMenuItems.sumOf { menuItem ->
-            val quantity = cartItems[menuItem.menuItemId] ?: 0
-            menuItem.price * quantity
-        }
-        val total = (subTotal * 1.1)
-
-        val historyOrder = HistoryOrder(
-            orderId = System.currentTimeMillis(),
-            staffName = "Admin", // Currently hardcoded as we don't have auth
-            tableId = cart.tableId,
-            menuItems = orderedMenuItems,
-            totalPrice = total,
-            orderTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
-        )
-
-        appViewModel.addHistoryOrder(historyOrder)
-        appViewModel.updateTableInfo(
-            TableInfo(
-                tableId = cart.tableId,
-                tableName = appViewModel.tableInfoList.value.find { it.tableId == cart.tableId }?.tableName
-                    ?: "Bàn ${cart.tableId}",
-                orderItems = emptyList(), // Clear current order items,
-                maxPeople = 4
-            )
-        )
-        cart.clear()
-        findNavController().popBackStack()
     }
 
     override fun collectStateAndUpdateUi() {
         collectFlow(cart.items) {
             val cartItems = cart.snapshotItems()
-            val orderRows = appViewModel.menuItems.value.mapNotNull { menuItem ->
+            val orderRows = appViewModel.uiState.value.menuItems.mapNotNull { menuItem ->
                 val quantity = cartItems[menuItem.menuItemId] ?: 0
                 if (quantity <= 0) return@mapNotNull null
                 OrderItemUi(
                     menuItemId = menuItem.menuItemId,
                     name = menuItem.name,
+                    imageUrl = menuItem.imageUrl ?: "",
                     category = menuItem.category,
                     quantity = quantity,
                     lineTotal = menuItem.price * quantity,

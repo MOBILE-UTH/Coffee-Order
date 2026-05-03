@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/managementFragment"
         android:name="com.coffee.order.fragment.management.ManagementFragment"
-        android:label="@string/tab_management"
+        android:label="@string/tab_booking"
         tools:layout="@layout/fragment_management" />
 
     <fragment
@@ -19,15 +19,14 @@
 
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.coffee.order.fragment.setting.SettingFragment"
+        android:name="com.coffee.order.feature.employee.fragment.setting.SettingFragment"
         android:label="@string/tab_setting"
         tools:layout="@layout/fragment_setting" />
 
     <fragment
         android:id="@+id/orderFragment"
-        android:name="com.coffee.order.fragment.order.OrderFragment"
+        android:name="com.coffee.order.feature.employee.fragment.order.OrderFragment"
         android:label="Order"
         tools:layout="@layout/fragment_order" />
-
 
 </navigation>

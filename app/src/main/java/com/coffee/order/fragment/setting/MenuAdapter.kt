@@ -1,19 +1,19 @@
-package com.coffee.order.fragment.setting
+package com.coffee.order.feature.employee.fragment.setting
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.coffee.order.R
 import com.coffee.order.databinding.LayoutMenuItemBinding
 import com.coffee.order.viewmodel.model.MenuItem
 import java.text.NumberFormat
 import java.util.Locale
 
-class MenuAdapter(
-    private val onDeleteMenuItem: (menuItem: MenuItem) -> Unit,
-    private val onEditMenuItem: (menuItem: MenuItem) -> Unit,
-) : ListAdapter<MenuItem, MenuAdapter.ViewHolder>(DiffCallback) {
+class MenuAdapter : ListAdapter<MenuItem, MenuAdapter.ViewHolder>(DiffCallback) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = LayoutMenuItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
@@ -25,20 +25,27 @@ class MenuAdapter(
         holder.bind(getItem(position))
     }
 
-    inner class ViewHolder(
+    class ViewHolder(
         private val binding: LayoutMenuItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: MenuItem) {
             binding.apply {
-                tvProductId.text = item.menuItemId.toString()
                 tvProductName.text = item.name
                 tvCategory.text = item.category
                 tvProductPrice.text = currencyFormatter.format(item.price)
-                btnEditProduct.setOnClickListener {
-                    onEditMenuItem(item)
-                }
-                btnDeleteProduct.setOnClickListener {
-                    onDeleteMenuItem(item)
+
+                // Load ảnh bằng Glide
+                if (!item.imageUrl.isNullOrBlank()) {
+                    Glide.with(ivProductImage.context)
+                        .load(item.imageUrl)
+                        .placeholder(R.drawable.ic_menu_book)
+                        .error(R.drawable.ic_menu_book)
+                        .centerCrop()
+                        .into(ivProductImage)
+                } else {
+                    Glide.with(ivProductImage.context).clear(ivProductImage)
+                    ivProductImage.setImageResource(R.drawable.ic_menu_book)
                 }
             }
         }
@@ -49,13 +56,11 @@ class MenuAdapter(
             NumberFormat.getCurrencyInstance(Locale.forLanguageTag("vi-VN"))
 
         val DiffCallback = object : DiffUtil.ItemCallback<MenuItem>() {
-            override fun areItemsTheSame(oldItem: MenuItem, newItem: MenuItem): Boolean {
-                return oldItem.menuItemId == newItem.menuItemId
-            }
+            override fun areItemsTheSame(oldItem: MenuItem, newItem: MenuItem) =
+                oldItem.menuItemId == newItem.menuItemId
 
-            override fun areContentsTheSame(oldItem: MenuItem, newItem: MenuItem): Boolean {
-                return oldItem == newItem
-            }
+            override fun areContentsTheSame(oldItem: MenuItem, newItem: MenuItem) =
+                oldItem == newItem && oldItem.imageUrl == newItem.imageUrl
         }
     }
 }

@@ -5,6 +5,7 @@ data class MenuItem(
     val name: String,
     val category: String,
     val price: Int,
+    val imageUrl: String? = null,
     val image: ByteArray? = null
 ) {
     // Không so sánh image vì nó có thể rất lớn và không cần thiết cho việc xác định tính đồng nhất của MenuItem
@@ -18,6 +19,7 @@ data class MenuItem(
         if (price != other.price) return false
         if (name != other.name) return false
         if (category != other.category) return false
+        if (imageUrl != other.imageUrl) return false
 
         return true
     }
@@ -27,7 +29,7 @@ data class MenuItem(
         result = 31 * result + price.hashCode()
         result = 31 * result + name.hashCode()
         result = 31 * result + category.hashCode()
-        result = 31 * result + (image?.contentHashCode() ?: 0)
+        result = 31 * result + (imageUrl?.hashCode() ?: 0)
         return result
     }
 }

@@ -53,6 +53,7 @@ class TableGridAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TableInfo) {
             binding.tvNumber.text = item.tableId.toDisplayTableNumber()
+            binding.tvCapacityValue.text = item.maxPeople.toString()
         }
     }
 
@@ -60,7 +61,8 @@ class TableGridAdapter(
         private val binding: LayoutOccupiedTableBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TableInfo) {
-            binding.tvNumber.text = item.tableId.toDisplayTableNumber()
+            binding.tvNumber.text = item.tableName
+            binding.tvCapacityValue.text = item.maxPeople.toString()
         }
     }
 

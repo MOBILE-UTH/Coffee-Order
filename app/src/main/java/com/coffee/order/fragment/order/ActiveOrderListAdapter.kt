@@ -1,9 +1,10 @@
-package com.coffee.order.fragment.order
+package com.coffee.order.feature.employee.fragment.order
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.bumptech.glide.Glide
 import com.coffee.order.databinding.ItemOrderActiveBinding
 import java.text.DecimalFormat
 
@@ -29,6 +30,9 @@ class ActiveOrderListAdapter(
         }
 
         val item = getItem(position)
+        Glide.with(binding.imageViewMenuItem.context)
+            .load(item.imageUrl)
+            .into(binding.imageViewMenuItem)
         binding.textViewMenuName.text = item.name
         binding.textViewMenuCategory.text = item.category
         binding.textViewQuantity.text = "x${item.quantity}"
@@ -44,6 +48,7 @@ class ActiveOrderListAdapter(
 
 data class OrderItemUi(
     val menuItemId: Long,
+    val imageUrl: String,
     val name: String,
     val category: String,
     val quantity: Int,

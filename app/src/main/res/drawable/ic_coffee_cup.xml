@@ -1,0 +1,43 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- Circle background -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.15"
+        android:pathData="M60,0 A60,60 0,1,1 60,120 A60,60 0,1,1 60,0 Z" />
+    <!-- Cup body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.9"
+        android:pathData="M35,48 L38,82 Q38,86 42,86 L78,86 Q82,86 82,82 L85,48 Z" />
+    <!-- Cup handle -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:pathData="M82,56 Q96,56 96,66 Q96,76 82,76"
+        android:strokeLineCap="round" />
+    <!-- Saucer -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M28,90 Q28,96 60,96 Q92,96 92,90 L28,90 Z" />
+    <!-- Steam lines -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:pathData="M48,40 Q50,34 48,28"
+        android:strokeLineCap="round" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:pathData="M60,38 Q62,32 60,26"
+        android:strokeLineCap="round" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:pathData="M72,40 Q74,34 72,28"
+        android:strokeLineCap="round" />
+</vector>
