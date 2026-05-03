@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.coffee.order.R
 import com.coffee.order.databinding.LayoutMenuItemBinding
-import com.coffee.order.viewmodel.model.MenuItem
+import com.coffee.order.domain.model.MenuItem
 import java.text.NumberFormat
 import java.util.Locale
 

@@ -56,8 +56,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.coffee.order.R
-import com.coffee.order.viewmodel.AppViewModel
-import com.coffee.order.viewmodel.model.MenuItem
+import com.coffee.order.domain.AppViewModel
+import com.coffee.order.domain.model.MenuItem
 import com.coffee.order.feature.admin.components.AddMenuItemBottomSheet
 import com.coffee.order.feature.admin.components.EditMenuItemBottomSheet
 import com.coffee.order.util.formatPrice

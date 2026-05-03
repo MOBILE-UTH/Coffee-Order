@@ -12,7 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
-import com.coffee.order.viewmodel.AppViewModel
+import com.coffee.order.domain.AppViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

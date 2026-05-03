@@ -1,4 +1,4 @@
-package com.coffee.order.fragment.history
+package com.coffee.order.feature.employee.fragment.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.coffee.order.R
 import com.coffee.order.databinding.LayoutOrderSummaryItemBinding
-import com.coffee.order.viewmodel.model.HistoryOrder
+import com.coffee.order.domain.model.HistoryOrder
 import java.text.NumberFormat
 import java.util.Locale
 

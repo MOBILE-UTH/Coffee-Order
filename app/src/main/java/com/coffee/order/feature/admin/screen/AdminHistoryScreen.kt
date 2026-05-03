@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.coffee.order.R
 import com.coffee.order.util.formatPrice
-import com.coffee.order.viewmodel.AppViewModel
+import com.coffee.order.domain.AppViewModel
 import com.coffee.order.domain.model.HistoryOrder
 
 @Composable

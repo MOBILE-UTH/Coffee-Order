@@ -37,7 +37,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.coffee.order.viewmodel.AppViewModel
+import com.coffee.order.domain.AppViewModel
 import com.coffee.order.feature.admin.screen.AdminDashboardScreen
 import com.coffee.order.feature.admin.screen.AdminHistoryScreen
 import com.coffee.order.feature.admin.screen.AdminStaffScreen

@@ -45,9 +45,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.coffee.order.fragment.order.OrderFragment
 import com.coffee.order.util.formatPrice
-import com.coffee.order.viewmodel.model.MenuItem
+import com.coffee.order.domain.model.MenuItem
+import com.coffee.order.feature.employee.fragment.order.OrderFragment
 
 
 @Preview

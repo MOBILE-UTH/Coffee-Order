@@ -1,4 +1,4 @@
-package com.coffee.order.viewmodel.model
+package com.coffee.order.domain.model
 
 data class HistoryOrder(
     val orderId: Long = 0L,

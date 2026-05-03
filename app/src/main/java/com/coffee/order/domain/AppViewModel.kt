@@ -1,23 +1,23 @@
-package com.coffee.order.viewmodel
+package com.coffee.order.domain
 
 import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.coffee.order.domain.model.HistoryOrder
+import com.coffee.order.domain.model.MenuItem
+import com.coffee.order.domain.model.TableInfo
 import com.coffee.order.network.TokenManager
 import com.coffee.order.repository.CoffeeOrderRepository
-import com.coffee.order.viewmodel.model.HistoryOrder
-import com.coffee.order.viewmodel.model.MenuItem
-import com.coffee.order.viewmodel.model.TableInfo
 import com.coffee.shared.dto.DashboardStatsDto
 import com.coffee.shared.dto.OrderItemDto
 import com.coffee.shared.dto.UserDto
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.delay
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -87,7 +87,10 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                             tableName = dto.name,
                             maxPeople = dto.maxPeople,
                             orderItems = dto.activeOrder?.items?.map { item ->
-                                TableInfo.OrderItem(item.menuItemId, item.quantity)
+                                TableInfo.OrderItem(
+                                    item.menuItemId,
+                                    item.quantity
+                                )
                             } ?: emptyList())
                     })
                 }

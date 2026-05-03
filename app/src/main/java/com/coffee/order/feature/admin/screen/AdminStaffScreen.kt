@@ -20,7 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.coffee.order.R
-import com.coffee.order.viewmodel.AppViewModel
+import com.coffee.order.domain.AppViewModel
 import com.coffee.order.feature.admin.components.CreateEmployeeBottomSheet
 import com.coffee.shared.dto.UserDto
 

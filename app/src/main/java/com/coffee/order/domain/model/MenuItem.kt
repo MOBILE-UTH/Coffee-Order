@@ -1,4 +1,4 @@
-package com.coffee.order.viewmodel.model
+package com.coffee.order.domain.model
 
 data class MenuItem(
     val menuItemId: Long = 0L,

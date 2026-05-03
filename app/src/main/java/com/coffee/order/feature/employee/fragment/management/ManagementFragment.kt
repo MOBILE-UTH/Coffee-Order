@@ -1,4 +1,4 @@
-package com.coffee.order.fragment.management
+package com.coffee.order.feature.employee.fragment.management
 
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager

@@ -9,14 +9,14 @@ import com.coffee.order.base.EmployeeBaseFragment
 import com.coffee.order.feature.employee.component.SelectMenuItemBottomSheet
 import com.coffee.order.databinding.FragmentOrderBinding
 import com.coffee.order.util.formatPrice
-import com.coffee.order.viewmodel.model.MenuItem
+import com.coffee.order.domain.model.MenuItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import androidx.navigation.fragment.findNavController
-import com.coffee.order.domain.model.TableInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.core.graphics.drawable.toDrawable
+import com.coffee.order.domain.model.TableInfo
 
 class OrderFragment : EmployeeBaseFragment<FragmentOrderBinding>(
     FragmentOrderBinding::inflate

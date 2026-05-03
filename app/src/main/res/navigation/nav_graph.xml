@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/managementFragment"
-        android:name="com.coffee.order.fragment.management.ManagementFragment"
+        android:name="com.coffee.order.feature.employee.fragment.management.ManagementFragment"
         android:label="@string/tab_booking"
         tools:layout="@layout/fragment_management" />
 
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.coffee.order.fragment.history.HistoryFragment"
+        android:name="com.coffee.order.feature.employee.fragment.history.HistoryFragment"
         android:label="@string/tab_history"
         tools:layout="@layout/fragment_history" />
 

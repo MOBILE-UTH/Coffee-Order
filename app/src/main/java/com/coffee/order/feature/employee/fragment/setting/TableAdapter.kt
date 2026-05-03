@@ -1,4 +1,4 @@
-package com.coffee.order.fragment.setting
+package com.coffee.order.feature.employee.fragment.setting
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.coffee.order.databinding.LayoutTableManageItemBinding
-import com.coffee.order.viewmodel.model.TableInfo
+import com.coffee.order.domain.model.TableInfo
 
 class TableAdapter : ListAdapter<TableInfo, TableAdapter.ViewHolder>(
     DiffCallback

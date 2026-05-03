@@ -1,4 +1,4 @@
-package com.coffee.order.fragment.management
+package com.coffee.order.feature.employee.fragment.management
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.fragment.app.activityViewModels
 import com.coffee.order.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.coffee.order.databinding.BottomSheetAddTableBinding
-import com.coffee.order.viewmodel.AppViewModel
-import com.coffee.order.viewmodel.model.TableInfo
+import com.coffee.order.domain.AppViewModel
+import com.coffee.order.domain.model.TableInfo
 
 class AddTableBottomSheetDialogFragment : BottomSheetDialogFragment() {
 

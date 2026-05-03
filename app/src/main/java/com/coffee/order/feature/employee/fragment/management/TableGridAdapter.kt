@@ -1,4 +1,4 @@
-package com.coffee.order.fragment.management
+package com.coffee.order.feature.employee.fragment.management
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.coffee.order.databinding.LayoutEmptyTableBinding
 import com.coffee.order.databinding.LayoutOccupiedTableBinding
+import com.coffee.order.domain.model.TableInfo
 import com.coffee.order.util.toDisplayTableNumber
-import com.coffee.order.viewmodel.model.TableInfo
 
 class TableGridAdapter(
     private val onTableClick: (TableInfo) -> Unit
